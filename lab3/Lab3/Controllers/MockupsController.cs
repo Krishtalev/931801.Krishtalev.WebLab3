@@ -48,7 +48,8 @@ namespace Lab3.Controllers {
 
         private void SaveAnswer(int? answer) {
             var lastQuestion = LastQuestion;
-            lastQuestion.UserAnswer = answer;
+            lastQuestion.UserAnswer = 0;
+            if (answer.HasValue) lastQuestion.UserAnswer = answer;
             HttpContext.Session.Set($"Question{QuestionCount - 1}", lastQuestion);
         }
 
